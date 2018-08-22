@@ -1,0 +1,88 @@
+# !!! Managed by Puppet !!!
+
+[<%= @pool %>]
+listen = <%= Array(@listen).join(':') %>
+<% if @listen_backlog -%>
+listen.backlog = <%= @listen_backlog %>
+<% end -%>
+<% if @listen_allowed_clients -%>
+listen.allowed_clients = <%= @listen_allowed_clients.join(', ') %>
+<% end -%>
+<% if @listen_owner -%>
+listen.owner = <%= @listen_owner %>
+<% end -%>
+<% if @listen_group -%>
+listen.group = <%= @listen_group %>
+<% end -%>
+<% if @listen_mode -%>
+listen.mode = <%= @listen_mode %>
+<% end -%>
+user = <%= @user %>
+<% if @group %>
+group = <%= @group %>
+<% end -%>
+pm = <%= @pm %>
+pm.max_children = <%= @pm_max_children %>
+<% if @pm_start_servers -%>
+pm.start_servers = <%= @pm_start_servers %>
+<% end -%>
+<% if @pm_min_spare_servers -%>
+pm.min_spare_servers = <%= @pm_min_spare_servers %>
+<% end -%>
+<% if @pm_max_spare_servers -%>
+pm.max_spare_servers = <%= @pm_max_spare_servers %>
+<% end -%>
+<% if @pm_max_requests -%>
+pm.max_requests = <%= @pm_max_requests %>
+<% end -%>
+<% if @pm_status_path -%>
+pm.status_path = <%= @pm_status_path %>
+<% end -%>
+<% if @ping_path -%>
+ping.path = <%= @ping_path %>
+<% end -%>
+<% if @ping_response -%>
+ping.response = <%= @ping_response %>
+<% end -%>
+<% if @request_terminate_timeout -%>
+request_terminate_timeout = <%= @request_terminate_timeout %>
+<% end -%>
+<% if @request_slowlog_timeout -%>
+request_slowlog_timeout = <%= @request_slowlog_timeout %>
+<% end -%>
+<% if @slowlog -%>
+slowlog = <%= @slowlog %>
+<% end -%>
+<% if @rlimit_files -%>
+rlimit_files = <%= @rlimit_files %>
+<% end -%>
+<% if @rlimit_core -%>
+rlimit_core = <%= @rlimit_core %>
+<% end -%>
+<% if @chroot -%>
+chroot = <%= @chroot %>
+<% end -%>
+<% if @chdir -%>
+chdir = <%= @chdir %>
+<% end -%>
+<% unless @catch_workers_output.nil? -%>
+catch_workers_output = <%= @catch_workers_output ? 'yes' : 'no' %>
+<% end -%> 
+<% if @security_limit_extensions -%>
+security.limit_extensions = <%= @security_limit_extensions.join(' ') %>
+<% end -%>
+<% @env.each do |k, v| -%>
+env[<%= k %>] = <%= v %>
+<% end -%>
+<% @php_flag.each do |k, v| -%>
+php_flag[<%= k %>] = <%= v ? 'on' : 'off' %>
+<% end -%>
+<% @php_value.each do |k, v| -%>
+php_value[<%= k %>] = <%= v %>
+<% end -%>
+<% @php_admin_flag.each do |k, v| -%>
+php_admin_flag[<%= k %>] = <%= v ? 'on' : 'off' %>
+<% end -%>
+<% @php_admin_value.each do |k, v| -%>
+php_admin_value[<%= k %>] = <%= v %>
+<% end -%>

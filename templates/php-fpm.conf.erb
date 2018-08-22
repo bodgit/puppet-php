@@ -1,0 +1,26 @@
+; !!! Managed by Puppet !!!
+
+include=<%= @conf_dir %>/*.conf
+
+[global]
+<% if @pid -%>
+pid = <%= @pid %>
+<% end -%>
+<% if @error_log -%>
+error_log = <%= @error_log %>
+<% end -%>
+<% if @log_level -%>
+log_level = <%= @log_level %>
+<% end -%>
+<% if @emergency_restart_threshold -%>
+emergency_restart_threshold = <%= @emergency_restart_threshold %>
+<% end -%>
+<% if @emergency_restart_interval -%>
+emergency_restart_interval = <%= @emergency_restart_interval %>
+<% end -%>
+<% if @process_control_timeout -%>
+process_control_timeout = <%= @process_control_timeout %>
+<% end -%>
+<% unless @daemonize.nil? -%>
+daemonize = <%= @daemonize ? 'yes' : 'no' %>
+<% end -%>

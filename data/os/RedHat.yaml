@@ -1,0 +1,101 @@
+---
+php::conf_dir: '/etc/php.d'
+php::extensions:
+  curl: {}
+  fileinfo: {}
+  json: {}
+  phar: {}
+  zip: {}
+php::package_name: 'php-common'
+
+php::cli::package_name: 'php-cli'
+
+php::extension::curl::extensions:
+  - 'curl'
+
+php::extension::fileinfo::extensions:
+  - 'fileinfo'
+
+php::extension::gd::extensions:
+  - 'gd'
+php::extension::gd::package_name: 'php-gd'
+
+php::extension::intl::extensions:
+  - 'intl'
+php::extension::intl::package_name: 'php-intl'
+
+php::extension::json::extensions:
+  - 'json'
+
+php::extension::ldap::extensions:
+  - 'ldap'
+php::extension::ldap::package_name: 'php-ldap'
+
+php::extension::mbstring::extensions:
+  - 'mbstring'
+php::extension::mbstring::package_name: 'php-mbstring'
+
+php::extension::mssql::extensions:
+  - 'mssql'
+  - 'pdo_dblib'
+php::extension::mssql::package_name: 'php-mssql'
+php::extension::mssql::settings:
+  'MSSQL/mssql.allow_persistent': 'On'
+  'MSSQL/mssql.compatability_mode': 'Off'
+  'MSSQL/mssql.max_links': '-1'
+  'MSSQL/mssql.max_persistent': '-1'
+  'MSSQL/mssql.min_error_severity': '10'
+  'MSSQL/mssql.min_message_severity': '10'
+  'MSSQL/mssql.secure_connection': 'Off'
+
+php::extension::mysql::extensions:
+  - 'mysql'
+  - 'mysqli'
+  - 'pdo_mysql'
+php::extension::mysql::package_name: 'php-mysql'
+php::extension::mysql::package_name: 'php-mysql'
+
+php::extension::pdo::extensions:
+  - 'pdo'
+  - 'pdo_sqlite'
+  - 'sqlite3'
+php::extension::pdo::package_name: 'php-pdo'
+
+php::extension::pgsql::extensions:
+  - 'pgsql'
+  - 'pdo_pgsql'
+php::extension::pgsql::package_name: 'php-pgsql'
+
+php::extension::phar::extensions:
+  - 'phar'
+
+php::extension::process::extensions:
+  - 'posix'
+  - 'sysvmsg'
+  - 'sysvsem'
+  - 'sysvshm'
+php::extension::process::package_name: 'php-process'
+
+php::extension::pspell::extensions:
+  - 'pspell'
+php::extension::pspell::package_name: 'php-pspell'
+
+php::extension::xml::extensions:
+  - 'dom'
+  - 'wddx'
+  - 'xmlreader'
+  - 'xmlwriter'
+  - 'xsl'
+php::extension::xml::package_name: 'php-xml'
+
+php::extension::zip::extensions:
+  - 'zip'
+
+php::fpm::conf_dir: '/etc/php-fpm.d'
+php::fpm::conf_file: '/etc/php-fpm.conf'
+php::fpm::daemonize: false
+php::fpm::error_log: '/var/log/php-fpm/error.log'
+php::fpm::package_name: 'php-fpm'
+php::fpm::service_name: 'php-fpm'
+
+php::pear::package_name: 'php-pear'
