@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Defined Type: php::extension
+  
+    &mdash; Documentation by YARD 0.9.14
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "puppet_defined_types::php::extension";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../puppet_defined_type_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (p)</a> &raquo;
+    <span class='title'><span class='object_link'>Defined Types</span></span>
+     &raquo; 
+    <span class="title">php::extension</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="puppet_class_list_link"
+        href="../puppet_class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Defined Type: php::extension</h1>
+<div class="box_info">
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>
+      manifests/extension.pp
+    </dd>
+  </dl>
+</div>
+
+<h2>Overview</h2>
+<div class="docstring">
+  <div class="discussion">
+    
+<p>Define a PHP extension.</p>
+
+<p>package_name =&gt; &#39;php-ldap&#39;,  extensions =&gt; [ &#39;ldap&#39;,
+],  settings =&gt; {  &#39;ldap/ldap.max_links&#39; =&gt; &#39;-1&#39;,  },
+}</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>A sample extension</p>
+</div></p>
+      
+      <pre class="example code"><code>include ::php
+
+::php::extension { &#39;ldap&#39;:
+  ensure       =&gt; present,</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>ensure</span>
+      
+      
+        <span class='type'>(<tt>Enum['present', 'absent']</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;present&#39;</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_name</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>extensions</span>
+      
+      
+        <span class='type'>(<tt>Array[String, 1]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>[
+    $title,
+  ]</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>settings</span>
+      
+      
+        <span class='type'>(<tt>Hash[String, String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../puppet_classes/php.html" title="puppet_classes::php (puppet_class)">::php</a></span></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><div class="method_details_list">
+  <table class="source_code">
+    <tr>
+      <td>
+        <pre class="lines">
+
+
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
+      </td>
+      <td>
+        <pre class="code"><span class="info file"># File 'manifests/extension.pp', line 25</span>
+
+define php::extension (
+  Enum[&#39;present&#39;, &#39;absent&#39;] $ensure       = &#39;present&#39;,
+  Optional[String]          $package_name = undef,
+  Array[String, 1]          $extensions   = [
+    $title,
+  ],
+  Hash[String, String]      $settings     = {},
+) {
+
+  if ! defined(Class[&#39;::php&#39;]) {
+    fail(&#39;You must include the php base class before using any php defined resources&#39;)
+  }
+
+  if $package_name {
+    package { $package_name:
+      ensure =&gt; $ensure,
+    }
+  }
+
+  $extensions.each |String $x| {
+    $file_ensure = $ensure ? {
+      &#39;present&#39; =&gt; file,
+      default   =&gt; &#39;absent&#39;,
+    }
+
+    $content = @(&quot;EOS&quot;/L)
+      ; Enable ${x} extension module
+      extension=${x}.so
+      | EOS
+
+    file { &quot;${::php::conf_dir}/${x}.ini&quot;:
+      ensure  =&gt; $file_ensure,
+      owner   =&gt; 0,
+      group   =&gt; 0,
+      mode    =&gt; &#39;0644&#39;,
+      content =&gt; $content,
+    }
+
+    if $package_name {
+      Package[$package_name] -&gt; File[&quot;${::php::conf_dir}/${x}.ini&quot;]
+    }
+  }
+
+  $settings.each |String $setting, String $value| {
+    ::php::setting { $setting:
+      ensure =&gt; $ensure,
+      value  =&gt; $value,
+    }
+  }
+}</pre>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+      <div id="footer">
+     Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
+</div>
+
+    </div>
+  </body>
+</html>
