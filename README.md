@@ -2,7 +2,7 @@
 
 Tested with Travis CI
 
-[![Build Status](https://travis-ci.org/bodgit/puppet-php.svg?branch=master)](https://travis-ci.org/bodgit/puppet-php)
+[![Build Status](https://travis-ci.com/bodgit/puppet-php.svg?branch=master)](https://travis-ci.com/bodgit/puppet-php)
 [![Coverage Status](https://coveralls.io/repos/bodgit/puppet-php/badge.svg?branch=master&service=github)](https://coveralls.io/github/bodgit/puppet-php?branch=master)
 [![Puppet Forge](http://img.shields.io/puppetforge/v/bodgit/php.svg)](https://forge.puppetlabs.com/bodgit/php)
 
@@ -22,7 +22,7 @@ Tested with Travis CI
 This module manages PHP and the FastCGI Process Manager.
 
 CentOS, RHEL, Scientific and Oracle Enterprise Linux is supported using Puppet
-4.6.0 or later.
+4.9.0 or later.
 
 ## Setup
 
@@ -77,7 +77,7 @@ version of the documentation is hosted at
 
 ## Limitations
 
-This module has been built on and tested against Puppet 4.6.0 and higher.
+This module has been built on and tested against Puppet 4.9.0 and higher.
 
 The module has been tested on:
 
